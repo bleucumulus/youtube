@@ -1,0 +1,53 @@
+{
+  "name": "youtube",
+  "version": "1.0.0",
+  "description": "The best way to watch and upload videos.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bleucumulus/youtube_learning.git"
+  },
+  "scripts": {
+    "start": "node build/init.js",
+    "build": "npm run build:server && npm run build:assets",
+    "build:server": "babel src -d build",
+    "build:assets": "webpack --mode=production",
+    "dev:server": "nodemon",
+    "dev:assets": "webpack --mode=development -w"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bleucumulus/youtube_learning/issues"
+  },
+  "homepage": "https://github.com/bleucumulus/youtube_learning#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "connect-mongo": "^5.0.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.3",
+    "mongoose": "^7.0.3",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "node-fetch": "^2.6.1",
+    "pug": "^3.0.2",
+    "run": "^1.4.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.21.8",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.21.4",
+    "@flydotio/dockerfile": "^0.2.5",
+    "babel-loader": "^9.1.2",
+    "css-loader": "^6.7.3",
+    "mini-css-extract-plugin": "^2.7.5",
+    "nodemon": "^2.0.22",
+    "sass": "^1.62.1",
+    "sass-loader": "^13.2.2",
+    "style-loader": "^3.3.2",
+    "webpack": "^5.82.1",
+    "webpack-cli": "^5.1.1"
+  }
+}
