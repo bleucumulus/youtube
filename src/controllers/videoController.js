@@ -156,7 +156,7 @@ export const createComment = async (req, res) => {
   video.comments.push(comment._id);
 
   video.save();
-  req.session.user = commentUser;
+  //req.session.user = commentUser;
   return res.status(201).json({ newCommentId: comment._id });
 };
 

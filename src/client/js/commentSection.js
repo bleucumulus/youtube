@@ -9,8 +9,10 @@ const addComment = (text, id) => {
   newComment.className = "video__comment";
   const span = document.createElement("span");
   span.innerText = ` ${text}`;
+  span.className = "comment__box";
   const span2 = document.createElement("span");
   span2.innerText = "❌";
+  span2.className = "delete__btn";
   newComment.appendChild(span);
   newComment.appendChild(span2);
   videoComments.prepend(newComment);
@@ -33,6 +35,7 @@ const handleSubmit = async (event) => {
     },
     body: JSON.stringify({ text }),
   });
+  //console.log(response);
   if (response.status === 201) {
     textarea.value = "";
     const { newCommentId } = await response.json();

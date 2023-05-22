@@ -7,7 +7,7 @@ export const getJoin = (req, res) => {
 };
 export const postJoin = async (req, res) => {
   const { name, email, username, password, password2, location } = req.body;
-  console.log(req.body);
+  //console.log(req.body);
   const pageTitle = "Join";
   if (password !== password2) {
     return res.status(400).render("join", {
@@ -91,7 +91,7 @@ export const finishGithubLogin = async (req, res) => {
       headers: { Accept: "application/json" },
     })
   ).json();
-  console.log(tokenRequest);
+  //console.log(tokenRequest);
   //res.send(JSON.stringify(tokenRequest));
   if ("access_token" in tokenRequest) {
     const { access_token } = tokenRequest;
@@ -243,7 +243,7 @@ export const see = async (req, res) => {
     return res.status(404).render("404", { pageTitle: "User not found." });
   }
   const videos = await Video.find({ owner: user._id });
-  console.log(videos);
+  //console.log(videos);
   return res.render("users/profile", {
     pageTitle: user.name,
     user,

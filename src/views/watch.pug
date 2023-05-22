@@ -40,7 +40,7 @@ block content
     div.video__comments
         ul
             each comment in video.comments.reverse() 
-                li.video__comment
+                li.video__comment(data-id=comment.id)
                     div.video__comment_container
                         span.comment__box=comment.text
                         if loggedIn && (String(loggedInUser._id) === String(comment.owner))
