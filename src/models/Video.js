@@ -22,7 +22,7 @@ videoSchema.static("formatHashtags", function (hashtags) {
 });
 
 videoSchema.pre("save", async function () {
-  console.log("save a video: ", this);
+  //console.log("save a video: ", this);
 });
 
 const Video = mongoose.model("Video", videoSchema);

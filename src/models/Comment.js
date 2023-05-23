@@ -7,6 +7,8 @@ const commentSchema = new mongoose.Schema({
   createdAt: { type: Date, required: true, default: Date.now },
 });
 
+commentSchema.pre("save", async function () {});
+
 const Comment = mongoose.model("Comment", commentSchema);
 
 export default Comment;

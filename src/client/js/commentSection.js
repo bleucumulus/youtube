@@ -48,21 +48,16 @@ const handleSubmit = async (event) => {
 
 const handleDelete = async (event) => {
   const deleteComment = event.target.parentElement;
-  const {
-    dataset: { id },
-  } = event.target.parentElement;
-  const videoId = videoContainer.dataset.id;
-  const response = await fetch(`/api/videos/${videoId}/delete`, {
+  const deleteId = deleteComment.dataset.id;
+  const commentId = videoContainer.dataset.id;
+  await fetch(`/api/videos/${commentId}/delete`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ commentId: id }),
+    body: JSON.stringify({ deleteId }),
   });
-
-  if (response.status === 200) {
-    deleteComment.remove();
-  }
+  deleteComment.remove();
 };
 
 if (form) {

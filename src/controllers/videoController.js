@@ -7,7 +7,6 @@ export const home = async (req, res) => {
     const videos = await Video.find({})
       .sort({ createdAt: "desc" })
       .populate("owner");
-    console.log(videos);
     return res.render("home", { pageTitle: "Home", videos });
   } catch {
     return res.render("server-error");
@@ -98,7 +97,7 @@ export const deleteVideo = async (req, res) => {
     user: { _id },
   } = req.session;
   const video = await Video.findById(id);
-  const user = await User.findById(id);
+  const user = await User.findById(_id);
   if (!video) {
     return res.status(404).render("404", { pageTitle: "Video not found" });
   }
@@ -165,20 +164,26 @@ export const createComment = async (req, res) => {
 
 export const deleteComment = async (req, res) => {
   const {
-    session: { user },
-    body: { commentId },
+    session: {
+      user: { _id },
+    },
+    body: { deleteId },
     params: { id },
   } = req;
 
   const video = await Video.findById(id);
+  const user = await User.findById(_id);
 
   if (!video) {
     return res.sendStatus(404);
   }
 
-  video.comments.splice(video.comments.indexOf(commentId), 1);
-  await Comment.findByIdAndDelete(commentId);
+  await Comment.findByIdAndDelete(deleteId);
+  video.comments.splice(video.comments.indexOf(deleteId), 1);
+  user.comments.splice(user.comments.indexOf(deleteId), 1);
+
   await video.save();
+  await user.save();
 
   return res.sendStatus(200);
 };
