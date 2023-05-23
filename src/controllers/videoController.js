@@ -143,6 +143,7 @@ export const createComment = async (req, res) => {
   } = req;
 
   const video = await Video.findById(id);
+  const commentUser = await User.findById(user._id);
 
   if (!video) {
     return res.sendStatus(404);
@@ -154,8 +155,10 @@ export const createComment = async (req, res) => {
     video: id,
   });
   video.comments.push(comment._id);
+  commentUser.comments.push(comment._id);
 
   video.save();
+  commentUser.save();
   //req.session.user = commentUser;
   return res.status(201).json({ newCommentId: comment._id });
 };
