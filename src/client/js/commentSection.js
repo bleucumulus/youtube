@@ -7,14 +7,17 @@ const addComment = (text, id) => {
   const newComment = document.createElement("li");
   newComment.dataset.id = id;
   newComment.className = "video__comment";
+  const div = document.createElement("div");
+  div.className = "video__comment_container";
   const span = document.createElement("span");
   span.innerText = ` ${text}`;
   span.className = "comment__box";
   const span2 = document.createElement("span");
   span2.innerText = "❌";
   span2.className = "delete__btn";
-  newComment.appendChild(span);
-  newComment.appendChild(span2);
+  newComment.appendChild(div);
+  div.appendChild(span);
+  div.appendChild(span2);
   videoComments.prepend(newComment);
 
   deleteBtn.addEventListener("click", handleDelete);

@@ -28,14 +28,18 @@
   margin-top: 20px;
 
   .video__comment {
-    padding: 10px;
-    border-radius: 9999px;
-    background-color: white;
-    color: black;
-    margin-bottom: 10px;
-
     .video__comment_container {
       display: flex;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 9999px;
+      background-color: white;
+      color: black;
+
+      opacity: 1;
+      &.showing {
+        opacity: 0;
+      }
 
       .comment__box {
         width: 95%;

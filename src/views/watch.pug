@@ -40,8 +40,8 @@ block content
     div.video__comments
         ul
             each comment in video.comments.reverse() 
-                li.video__comment(data-id=comment.id)
-                    div.video__comment_container
+                li.video__comment
+                    div.video__comment_container(data-id=comment.id)
                         span.comment__box=comment.text
                         if loggedIn && (String(loggedInUser._id) === String(comment.owner))
                             span.delete__btn#deleteBtn ❌
